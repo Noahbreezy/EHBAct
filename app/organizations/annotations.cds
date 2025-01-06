@@ -19,8 +19,26 @@ annotate service.Organizations with @(
         {
             $Type : 'UI.ReferenceFacet',
             ID : 'GeneratedFacet1',
-            Label : 'General Information',
+            Label : 'Create Organization',
             Target : '@UI.FieldGroup#GeneratedGroup',
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'OrganizationsListFacet',
+            Label : 'Organizations List',
+            Target : '@UI.LineItem'
+        }
+    ],
+    UI.LineItem : [
+        {
+            $Type : 'UI.DataField',
+            Label : 'Name',
+            Value : name,
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'Contact Person',
+            Value : contactPerson,
         },
     ]
 );

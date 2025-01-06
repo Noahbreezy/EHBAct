@@ -16,4 +16,18 @@ service OrganizationService {
         completedRegistrations: Integer;
         canceledRegistrations: Integer;
     };
+    action GetOrganizationActivities(organizationID: UUID) returns many {
+        ID: UUID;
+        title: String;
+        location: String;
+        date: DateTime;
+        requiredVolunteers: Integer;
+        status: String;
+        positionCount: Integer;
+        participantCount: Integer;
+    };
+    action GetAllOrganizations() returns many {
+        name: String;
+        contactPerson: String;
+    };
 }

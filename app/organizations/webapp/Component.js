@@ -17,6 +17,11 @@ sap.ui.define(
                 return Promise.resolve({
                     preferredMode: ["create"]
                 });
+            },
+
+            init: function() {
+                Component.prototype.init.apply(this, arguments);
+                this.getRouter().initialize();
             }
         });
     }

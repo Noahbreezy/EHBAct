@@ -28,7 +28,9 @@
     "start-local": "npm run generate-entry-point && npm run cds-watch",
     "generate-entry-point": "dev-cap-tools gen-entrypoint",
     "cds-watch": "cds watch --open",
-    "watch-organizations": "cds watch --open organizations/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-organizations": "cds watch --open organizations/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-ehbact.organizationsmanagement": "cds watch --open ehbact.organizationsmanagement/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-activities": "cds watch --open activities/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "sql": {
@@ -55,6 +57,8 @@
   "lcap": true,
   "sapux": [
     "app/ehbact",
-    "app/organizations"
+    "app/organizations",
+    "app/ehbact.organizationsmanagement",
+    "app/activities"
   ]
 }

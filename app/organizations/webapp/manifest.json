@@ -101,7 +101,7 @@
               "content": {
                 "header": {
                   "visible": false,
-                  "anchorBarVisible": false
+                  "anchorBarVisible": true
                 }
               }
             }

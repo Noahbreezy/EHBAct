@@ -3,6 +3,12 @@ const cds = require('@sap/cds');
 module.exports = cds.service.impl(async function () {
     const { Activity, Position } = this.entities;
 
+    this.on('GetAllOrganizations', async (req) => {
+        // Fetch all organizations with their name and contact person
+        const organizations = await SELECT.from(Organization).columns('name', 'contactPerson');
+        return organizations;
+    });
+    
     this.on('PublishActivity', async (req) => {
         const { activityID } = req.data;
 
@@ -50,6 +56,37 @@ module.exports = cds.service.impl(async function () {
         };
     
         return result;
+    });
+
+    this.on('GetOrganizationActivities', async (req) => {
+        const { organizationID } = req.data;
+
+        // Fetch all activities for the organization
+        const activities = await SELECT.from(Activity).where({ organization_ID: organizationID });
+
+        // Fetch positions and registrations for all activities
+        const activityIDs = activities.map(activity => activity.ID);
+        const positions = await SELECT.from(Position).where({ activity_ID: activityIDs });
+        const registrations = await SELECT.from(Registration).where({ activity_ID: activityIDs });
+
+        // Aggregate data
+        const activityData = activities.map(activity => {
+            const activityPositions = positions.filter(position => position.activity_ID === activity.ID);
+            const activityRegistrations = registrations.filter(registration => registration.activity_ID === activity.ID);
+            return {
+                ...activity,
+                positionCount: activityPositions.length,
+                participantCount: activityRegistrations.length
+            };
+        });
+
+        return activityData;
+    });
+
+    this.on('GetAllOrganizations', async (req) => {
+        // Fetch all organizations with their name and contact person
+        const organizations = await SELECT.from(Organization).columns('name', 'contactPerson');
+        return organizations;
     });
     
 });
