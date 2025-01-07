@@ -57,12 +57,6 @@
       "cozy": true
     },
     "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "ehbact.organizations.organizations.i18n.i18n"
-        }
-      },
       "": {
         "dataSource": "mainService",
         "preload": true,
@@ -72,46 +66,36 @@
           "earlyRequests": true
         }
       },
-      "@i18n": {
+      "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
-        "uri": "i18n/i18n.properties"
+        "settings": {
+          "bundleName": "ehbact.organizations.organizations.i18n.i18n"
+        }
       }
     },
     "resources": {
       "css": []
     },
     "routing": {
-      "config": {
-        "routerClass": "sap.m.routing.Router",
-        "viewType": "XML",
-        "viewPath": "organizations.webapp.view",
-        "controlId": "app",
-        "controlAggregation": "pages",
-        "async": true,
-        "path": "organizations.webapp.view"
-      },
+      "config": {},
       "routes": [
         {
-          "pattern": "",
-          "name": "Organizations",
-          "target": "Organizations"
-        },
-        {
-          "pattern": "Organizations({key})/Activities",
-          "name": "Activities",
-          "target": "Activities"
+          "pattern": "Organizations({key}):?query:",
+          "name": "OrganizationsObjectPage",
+          "target": "OrganizationsObjectPage"
         }
       ],
       "targets": {
-        "Organizations": {
-          "viewName": "Organizations",
-          "viewLevel": 1,
-          "viewId": "organizationsView"
-        },
-        "Activities": {
-          "viewName": "Activities",
-          "viewLevel": 2,
-          "viewId": "activitiesView"
+        "OrganizationsObjectPage": {
+          "type": "Component",
+          "id": "OrganizationsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/Organizations",
+              "editableHeaderContent": false
+            }
+          }
         }
       }
     }
