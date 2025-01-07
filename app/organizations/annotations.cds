@@ -1,5 +1,4 @@
 using OrganizationService as service from '../../srv/OrganizationService';
-
 annotate service.Organizations with @(
     UI.FieldGroup #GeneratedGroup : {
         $Type : 'UI.FieldGroupType',
@@ -43,3 +42,4 @@ annotate service.Organizations with @(
         },
     ]
 );
+

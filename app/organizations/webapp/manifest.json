@@ -77,7 +77,6 @@
       "css": []
     },
     "routing": {
-      "config": {},
       "routes": [
         {
           "pattern": "Organizations({key}):?query:",
