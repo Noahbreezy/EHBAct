@@ -81,31 +81,37 @@
       "css": []
     },
     "routing": {
-      "config": {},
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "organizations.webapp.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true,
+        "path": "organizations.webapp.view"
+      },
       "routes": [
         {
-          "pattern": "Organizations({key}):?query:",
-          "name": "OrganizationsObjectPage",
-          "target": "OrganizationsObjectPage"
+          "pattern": "",
+          "name": "Organizations",
+          "target": "Organizations"
+        },
+        {
+          "pattern": "Organizations({key})/Activities",
+          "name": "Activities",
+          "target": "Activities"
         }
       ],
       "targets": {
-        "OrganizationsObjectPage": {
-          "type": "Component",
-          "id": "OrganizationsObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/Organizations",
-              "content": {
-                "header": {
-                  "visible": false,
-                  "anchorBarVisible": true
-                }
-              }
-            }
-          }
+        "Organizations": {
+          "viewName": "Organizations",
+          "viewLevel": 1,
+          "viewId": "organizationsView"
+        },
+        "Activities": {
+          "viewName": "Activities",
+          "viewLevel": 2,
+          "viewId": "activitiesView"
         }
       }
     }

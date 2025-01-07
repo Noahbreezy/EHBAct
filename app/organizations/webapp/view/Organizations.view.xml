@@ -1,0 +1,20 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="organizations.controller.Organizations">
+    <Page
+        id="organizationsPage"
+        title="Organizations">
+        <content>
+            <List
+                id="organizationList"
+                items="{path: '/Organizations'}"
+                itemPress="onOrganizationPress">
+                <StandardListItem
+                    id="organizationListItem"
+                    title="{name}"
+                    description="{contactPerson}" />
+            </List>
+        </content>
+    </Page>
+</mvc:View>

@@ -26,7 +26,6 @@ entity Activity {
     status : String enum { Draft; Published; }; 
 }
 
-
 entity Position {
     key ID : UUID;
     title  : String(100);
