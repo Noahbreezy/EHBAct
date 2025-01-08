@@ -41,7 +41,8 @@ entity Registration {
     key ID : UUID;
     status : String enum { Registered; Cancelled; Completed; };
     performedHours : Decimal(10,2);
-    volunteer : Association to Volunteer;
+    volunteer_ID : UUID; // Foreign key for Volunteer
+    volunteer : Association to Volunteer on volunteer_ID = $self.volunteer_ID; // Reference Volunteer
     position  : Association to Position;
     activity  : Association to Activity;
 }
