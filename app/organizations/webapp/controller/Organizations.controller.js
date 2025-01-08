@@ -9,12 +9,8 @@ sap.ui.define([
         },
 
         onOrganizationPress: function (oEvent) {
-            const oItem = oEvent.getSource();
-            const sPath = oItem.getBindingContext().getPath();
-            const sOrganizationId = sPath.split("/").pop(); // Extract ID from the path
-
-            const oRouter = this.getOwnerComponent().getRouter();
-            oRouter.navTo("Activities", { key: sOrganizationId });
+            var sOrgId = oEvent.getSource().getBindingContext().getProperty("ID");
+            this.getOwnerComponent().getRouter().navTo("ActivitiesList", { organizationID: sOrgId });
         }
     });
 });

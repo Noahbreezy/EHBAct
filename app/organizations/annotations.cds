@@ -1,7 +1,5 @@
 using OrganizationService as service from '../../srv/OrganizationService';
-using VolunteerService as vsrv from '../../srv/VolunteerService';
 
-// Annotate Organizations Entity
 annotate service.Organizations with @(
     UI.FieldGroup #OrganizationDetails : {
         $Type : 'UI.FieldGroupType',
@@ -30,7 +28,6 @@ annotate service.Organizations with @(
     ]
 );
 
-// Annotate Activities Entity
 annotate service.Activities with @(
     UI.LineItem : [
         { $Type : 'UI.DataField', Label : 'Title', Value : title },
@@ -53,7 +50,6 @@ annotate service.Activities with @(
     ]
 );
 
-// Annotate Positions Entity
 annotate service.Positions with @(
     UI.LineItem : [
         { $Type : 'UI.DataField', Label : 'Title', Value : title },
@@ -77,12 +73,11 @@ annotate service.Positions with @(
     ]
 );
 
-// Annotate Registrations Entity
 annotate service.Registrations with @(
     UI.LineItem : [
         { $Type : 'UI.DataField', Label : 'Status', Value : status },
         { $Type : 'UI.DataField', Label : 'Performed Hours', Value : performedHours },
-        { $Type : 'UI.DataField', Label : 'Volunteer', Value : volunteer.name }
+        { $Type : 'UI.DataField', Label : 'Volunteer', Value : volunteerName }
     ],
     UI.HeaderInfo : {
         TypeName : 'Registration',

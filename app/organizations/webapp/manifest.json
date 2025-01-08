@@ -79,12 +79,40 @@
     "routing": {
       "routes": [
         {
+          "pattern": "",
+          "name": "OrganizationsList",
+          "target": "OrganizationsList"
+        },
+        {
           "pattern": "Organizations({key}):?query:",
           "name": "OrganizationsObjectPage",
           "target": "OrganizationsObjectPage"
+        },
+        {
+          "pattern": "Activities({organizationID}):?query:",
+          "name": "ActivitiesList",
+          "target": "ActivitiesList"
         }
       ],
       "targets": {
+        "OrganizationsList": {
+          "type": "Component",
+          "id": "OrganizationsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Organizations",
+              "variantManagement": "None",
+              "navigation": {
+                "OrganizationsObjectPage": {
+                  "detail": {
+                    "route": "OrganizationsObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
         "OrganizationsObjectPage": {
           "type": "Component",
           "id": "OrganizationsObjectPage",
@@ -93,6 +121,24 @@
             "settings": {
               "contextPath": "/Organizations",
               "editableHeaderContent": false
+            }
+          }
+        },
+        "ActivitiesList": {
+          "type": "Component",
+          "id": "ActivitiesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Activities",
+              "variantManagement": "None",
+              "navigation": {
+                "ActivitiesObjectPage": {
+                  "detail": {
+                    "route": "ActivitiesObjectPage"
+                  }
+                }
+              }
             }
           }
         }

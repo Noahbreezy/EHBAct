@@ -6,15 +6,25 @@
         id="organizationsPage"
         title="Organizations">
         <content>
-            <List
-                id="organizationList"
-                items="{path: '/Organizations'}"
-                itemPress="onOrganizationPress">
-                <StandardListItem
-                    id="organizationListItem"
-                    title="{name}"
-                    description="{contactPerson}" />
-            </List>
+            <VBox id="organizationVBox">
+                <form:SimpleForm id="organizationForm" editable="true">
+                    <form:content>
+                        <Label id="nameLabel" text="Name" />
+                        <Input id="nameInput" value="{name}" />
+                        <Label id="contactPersonLabel" text="Contact Person" />
+                        <Input id="contactPersonInput" value="{contactPerson}" />
+                    </form:content>
+                </form:SimpleForm>
+                <List
+                    id="organizationList"
+                    items="{path: '/Organizations'}"
+                    itemPress="onOrganizationPress">
+                    <StandardListItem
+                        id="organizationListItem"
+                        title="{name}"
+                        description="{contactPerson}" />
+                </List>
+            </VBox>
         </content>
     </Page>
 </mvc:View>
