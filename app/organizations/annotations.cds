@@ -17,9 +17,9 @@ annotate service.Organizations with @(
         },
         {
             $Type : 'UI.ReferenceFacet',
-            ID : 'ActivitiesFacet',
-            Label : 'Activities',
-            Target : '/Activities'
+            ID : 'OrganizationsListFacet',
+            Label : 'Organizations',
+            Target : '@UI.LineItem'
         }
     ],
     UI.LineItem : [

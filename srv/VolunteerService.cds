@@ -1,5 +1,7 @@
 using { ehbact as db } from '../db/schema';
 
+annotate VolunteerService.Volunteers with @cds.draft.enabled;
+
 service VolunteerService {
 
   @odata.draft.enabled
