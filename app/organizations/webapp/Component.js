@@ -15,7 +15,7 @@ sap.ui.define(
              */
             getStartupParameters: function() {
                 return Promise.resolve({
-                    preferredMode: ["create"]
+                    preferredMode: ["update"]
                 });
             },
 

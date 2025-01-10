@@ -77,6 +77,8 @@
       "css": []
     },
     "routing": {
+      "useHash": true,
+      "config": {},
       "routes": [
         {
           "pattern": ":?query:",
@@ -111,7 +113,22 @@
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "entitySet": "Organizations"
+              "contextPath": "/Organizations",
+              "variantManagement": "Page",
+              "navigation": {
+                "Organizations": {
+                  "detail": {
+                    "route": "OrganizationsObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
             }
           }
         },
@@ -121,12 +138,26 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "contextPath": "/Organizations", 
               "editableHeaderContent": false,
+              "contextPath": "/Organizations",
+              "variantManagement": "Page",
+              "content": {
+                "header": {
+                  "visible": false,
+                  "anchorBarVisible": true
+                }
+              },
               "navigation": {
                 "activities": {
                   "detail": {
                     "route": "ActivitiesObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
                   }
                 }
               }
