@@ -57,12 +57,6 @@
       "cozy": true
     },
     "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "ehbact.organizations.organizations.i18n.i18n"
-        }
-      },
       "": {
         "dataSource": "mainService",
         "preload": true,
@@ -72,24 +66,72 @@
           "earlyRequests": true
         }
       },
-      "@i18n": {
+      "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
-        "uri": "i18n/i18n.properties"
+        "settings": {
+          "bundleName": "ehbact.organizations.organizations.i18n.i18n"
+        }
       }
     },
     "resources": {
       "css": []
     },
     "routing": {
+      "useHash": true,
       "config": {},
       "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "OrganizationsList",
+          "target": "OrganizationsList"
+        },
         {
           "pattern": "Organizations({key}):?query:",
           "name": "OrganizationsObjectPage",
           "target": "OrganizationsObjectPage"
+        },
+        {
+          "pattern": "Organizations({key})/activities({key2}):?query:",
+          "name": "ActivitiesObjectPage",
+          "target": "ActivitiesObjectPage"
+        },
+        {
+          "pattern": "Activities({key})/Positions({key2}):?query:",
+          "name": "PositionsObjectPage",
+          "target": "PositionsObjectPage"
+        },
+        {
+          "pattern": "Positions({key})/Registrations({key2}):?query:",
+          "name": "RegistrationsObjectPage",
+          "target": "RegistrationsObjectPage"
         }
       ],
       "targets": {
+        "OrganizationsList": {
+          "type": "Component",
+          "id": "OrganizationsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Organizations",
+              "variantManagement": "Page",
+              "navigation": {
+                "Organizations": {
+                  "detail": {
+                    "route": "OrganizationsObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
         "OrganizationsObjectPage": {
           "type": "Component",
           "id": "OrganizationsObjectPage",
@@ -98,12 +140,71 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/Organizations",
+              "variantManagement": "Page",
               "content": {
                 "header": {
                   "visible": false,
                   "anchorBarVisible": true
                 }
+              },
+              "navigation": {
+                "activities": {
+                  "detail": {
+                    "route": "ActivitiesObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
               }
+            }
+          }
+        },
+        "ActivitiesObjectPage": {
+          "type": "Component",
+          "id": "ActivitiesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Activities",
+              "navigation": {
+                "positions": {
+                  "detail": {
+                    "route": "PositionsObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "PositionsObjectPage": {
+          "type": "Component",
+          "id": "PositionsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Positions",
+              "navigation": {
+                "registrations": {
+                  "detail": {
+                    "route": "RegistrationsObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "RegistrationsObjectPage": {
+          "type": "Component",
+          "id": "RegistrationsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Registrations"
             }
           }
         }

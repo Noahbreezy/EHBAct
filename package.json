@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "start-local": "npm run generate-entry-point && npm run cds-watch",
+    "start-local": "npm run generate-entry-point && npm run cds-watch --open organizations/webapp/index.html",
     "generate-entry-point": "dev-cap-tools gen-entrypoint",
     "cds-watch": "cds watch --open",
     "watch-organizations": "cds watch --open organizations/webapp/index.html?sap-ui-xx-viewCache=false",
@@ -61,6 +61,7 @@
     "app/ehbact",
     "app/organizations",
     "app/ehbact.organizationsmanagement",
+    "app/activities",
     "app/activities",
     "app/activities",
     "app/activities"
