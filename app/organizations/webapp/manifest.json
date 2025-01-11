@@ -96,12 +96,12 @@
           "target": "ActivitiesObjectPage"
         },
         {
-          "pattern": "Activities({key})/Positions({key2}):?query:",
+          "pattern": "Organizations({key})/activities({key2})/positions({key3}):?query:",
           "name": "PositionsObjectPage",
           "target": "PositionsObjectPage"
         },
         {
-          "pattern": "Positions({key})/Registrations({key2}):?query:",
+          "pattern": "Organizations({key})/activities({key2})/positions({key3})/registrations({key4}):?query:",
           "name": "RegistrationsObjectPage",
           "target": "RegistrationsObjectPage"
         }
@@ -138,26 +138,11 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/Organizations",
-              "variantManagement": "Page",
-              "content": {
-                "header": {
-                  "visible": false,
-                  "anchorBarVisible": true
-                }
-              },
+              "entitySet": "Organizations",
               "navigation": {
                 "activities": {
                   "detail": {
                     "route": "ActivitiesObjectPage"
-                  }
-                }
-              },
-              "controlConfiguration": {
-                "@com.sap.vocabularies.UI.v1.LineItem": {
-                  "tableSettings": {
-                    "type": "ResponsiveTable"
                   }
                 }
               }
