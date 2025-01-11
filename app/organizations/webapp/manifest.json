@@ -91,7 +91,7 @@
           "target": "OrganizationsObjectPage"
         },
         {
-          "pattern": "Organizations({key})/Activities({key2}):?query:",
+          "pattern": "Organizations({key})/activities({key2}):?query:",
           "name": "ActivitiesObjectPage",
           "target": "ActivitiesObjectPage"
         },

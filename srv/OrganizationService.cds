@@ -43,11 +43,8 @@ service OrganizationService {
             ID,
             status,
             performedHours,
-            // Include the foreign key if you need it
             volunteer_ID,
-            // <-- Reuse the existing association from db.Registration
             volunteer,
-            // <-- Alias the volunteer.name field
             volunteer.name as volunteerName,
             position,
             activity
