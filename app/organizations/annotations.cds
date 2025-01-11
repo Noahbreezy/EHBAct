@@ -245,6 +245,12 @@ annotate service.Registrations with @(
       ID    : 'RegistrationDetailsFacet',
       Label : 'Registration Details',
       Target: '@UI.FieldGroup#RegistrationDetails'
+    },
+    {
+      $Type : 'UI.ReferenceFacet',
+      ID    : 'ActivityFacet',
+      Label : 'Activity',
+      Target: '@UI.LineItem'
     }
   ]
 );
