@@ -3,7 +3,7 @@ using {ehbact as db} from '../db/schema';
 service OrganizationService {
 
     @odata.draft.enabled
-    entity Organizations              as
+    entity Organizations as
         projection on db.Organization {
             ID,
             name,
@@ -12,7 +12,7 @@ service OrganizationService {
         };
 
     @odata.draft.enabled
-    entity Activities                 as
+    entity Activities    as
         projection on db.Activity {
             ID,
             title,
@@ -25,7 +25,7 @@ service OrganizationService {
         };
 
     @odata.draft.enabled
-    entity Positions                  as
+    entity Positions     as
         projection on db.Position {
             ID,
             title,
@@ -38,14 +38,13 @@ service OrganizationService {
         };
 
     @odata.draft.enabled
-    entity Registrations              as
+    entity Registrations as
         projection on db.Registration {
             ID,
             status,
             performedHours,
             volunteer_ID,
-            volunteer,
-            volunteer.name as volunteerName,
+            volunteer.name as volunteerName, 
             position,
             activity
         };

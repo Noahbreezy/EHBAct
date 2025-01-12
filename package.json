@@ -27,12 +27,14 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "start-local": "npm run generate-entry-point && npm run cds-watch --open organizations/webapp/index.html",
+    "start-local-organizations": "npm run generate-entry-point && npm run cds-watch --open organizations/webapp/index.html",
+    "start-local-volunteers": "npm run generate-entry-point && npm run cds-watch --open volunteers/webapp/index.html",
     "generate-entry-point": "dev-cap-tools gen-entrypoint",
     "cds-watch": "cds watch --open",
     "watch-organizations": "cds watch --open organizations/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-ehbact.organizationsmanagement": "cds watch --open ehbact.organizationsmanagement/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-activities": "cds watch --open activities/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-activities": "cds watch --open activities/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-volunteers": "cds watch --open volunteers/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "sql": {
@@ -64,6 +66,7 @@
     "app/activities",
     "app/activities",
     "app/activities",
-    "app/activities"
+    "app/activities",
+    "app/volunteers"
   ]
 }

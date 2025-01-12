@@ -1,3 +1,4 @@
 ID,name,email,totalHours
-1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p,John Doe,john.doe@example.com,15.50
-2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q,Jane Smith,jane.smith@example.com,20.00
+1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p,John Doe,john.doe@example.com,15.5
+2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q,Jane Smith,jane.smith@example.com,20.0
+3c4d5e6f-7g8h-9i0j-1k2l-3m4n5o6p7q9r,Alice Brown,alice.brown@example.com,25.0

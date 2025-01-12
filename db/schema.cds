@@ -6,8 +6,8 @@ entity Volunteer {
   email : String(100);
   totalHours : Decimal(10,2);
 
-  registrations : Composition of many Registration 
-    on registrations.volunteer = $self;
+  registrations : Association to many Registration 
+    on registrations.volunteer_ID = $self.ID;
 }
 
 entity Organization {
@@ -54,7 +54,7 @@ entity Registration {
 
   volunteer_ID : UUID; 
   volunteer    : Association to Volunteer 
-    on volunteer_ID = $self.volunteer_ID;
+    on volunteer.ID = $self.volunteer_ID;  // Ensure a unique match
 
   position : Association to Position;
   activity : Association to Activity;

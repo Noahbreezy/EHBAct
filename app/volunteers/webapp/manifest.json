@@ -1,7 +1,7 @@
 {
   "_version": "1.65.0",
   "sap.app": {
-    "id": "ehbact.organizations.organizations",
+    "id": "ehbact.volunteers.volunteers",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -11,13 +11,13 @@
     "description": "{{appDescription}}",
     "resources": "resources.json",
     "sourceTemplate": {
-      "id": "@sap/generator-fiori:feop",
+      "id": "@sap/generator-fiori:lrop",
       "version": "1.16.1",
-      "toolsId": "6d115166-b820-46cc-a2fc-2b08e80e3afe"
+      "toolsId": "3ee67b9e-9c64-4c2a-b044-ae5c4c3b1c99"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/organization/",
+        "uri": "/odata/v4/volunteer/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -57,6 +57,12 @@
       "cozy": true
     },
     "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "ehbact.volunteers.volunteers.i18n.i18n"
+        }
+      },
       "": {
         "dataSource": "mainService",
         "preload": true,
@@ -66,59 +72,56 @@
           "earlyRequests": true
         }
       },
-      "i18n": {
+      "@i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "ehbact.organizations.organizations.i18n.i18n"
-        }
+        "uri": "i18n/i18n.properties"
       }
     },
     "resources": {
       "css": []
     },
     "routing": {
-      "useHash": true,
       "config": {},
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "OrganizationsList",
-          "target": "OrganizationsList"
+          "name": "VolunteersList",
+          "target": "VolunteersList"
         },
         {
-          "pattern": "Organizations({key}):?query:",
-          "name": "OrganizationsObjectPage",
-          "target": "OrganizationsObjectPage"
+          "pattern": "Volunteers({key}):?query:",
+          "name": "VolunteersObjectPage",
+          "target": "VolunteersObjectPage"
         },
         {
-          "pattern": "Organizations({key})/activities({key2}):?query:",
+          "pattern": "ActivitiesList",
+          "name": "ActivitiesList",
+          "target": "ActivitiesList"
+        },
+        {
+          "pattern": "Activities({key}):?query:",
           "name": "ActivitiesObjectPage",
           "target": "ActivitiesObjectPage"
         },
         {
-          "pattern": "Organizations({key})/activities({key2})/positions({key3}):?query:",
+          "pattern": "Activities({key})/Positions({key2}):?query:",
           "name": "PositionsObjectPage",
           "target": "PositionsObjectPage"
-        },
-        {
-          "pattern": "Organizations({key})/activities({key2})/positions({key3})/registrations({key4}):?query:",
-          "name": "RegistrationsObjectPage",
-          "target": "RegistrationsObjectPage"
         }
       ],
       "targets": {
-        "OrganizationsList": {
+        "VolunteersList": {
           "type": "Component",
-          "id": "OrganizationsList",
+          "id": "VolunteersList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/Organizations",
+              "contextPath": "/Volunteers",
               "variantManagement": "Page",
               "navigation": {
-                "Organizations": {
+                "Volunteers": {
                   "detail": {
-                    "route": "OrganizationsObjectPage"
+                    "route": "VolunteersObjectPage"
                   }
                 }
               },
@@ -132,17 +135,36 @@
             }
           }
         },
-        "OrganizationsObjectPage": {
+        "VolunteersObjectPage": {
           "type": "Component",
-          "id": "OrganizationsObjectPage",
+          "id": "VolunteersObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "entitySet": "Organizations",
+              "editableHeaderContent": false,
+              "contextPath": "/Volunteers"
+            }
+          }
+        },
+        "ActivitiesList": {
+          "type": "Component",
+          "id": "ActivitiesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Activities",
+              "variantManagement": "Page",
               "navigation": {
-                "activities": {
+                "Activities": {
                   "detail": {
                     "route": "ActivitiesObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
                   }
                 }
               }
@@ -155,6 +177,7 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
+              "editableHeaderContent": false,
               "entitySet": "Activities",
               "navigation": {
                 "positions": {
@@ -172,24 +195,17 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "entitySet": "Positions",
-              "navigation": {
-                "registrations": {
-                  "detail": {
-                    "route": "RegistrationsObjectPage"
-                  }
-                }
-              }
+              "editableHeaderContent": false,
+              "entitySet": "Positions"
             }
           }
-        },
-        "RegistrationsObjectPage": {
-          "type": "Component",
-          "id": "RegistrationsObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "entitySet": "Registrations"
+        }
+      },
+      "semanticObjectMappings": {
+        "Activities": {
+          "actions": {
+            "display": {
+              "target": "ActivitiesList"
             }
           }
         }
