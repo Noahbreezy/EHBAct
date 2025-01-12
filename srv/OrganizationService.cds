@@ -44,7 +44,7 @@ service OrganizationService {
             status,
             performedHours,
             volunteer_ID,
-            volunteer.name as volunteerName, // This will now work correctly with the updated association
+            volunteer.name as volunteerName, 
             position,
             activity
         };

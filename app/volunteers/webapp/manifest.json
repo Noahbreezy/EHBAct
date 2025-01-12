@@ -92,6 +92,26 @@
           "pattern": "Volunteers({key}):?query:",
           "name": "VolunteersObjectPage",
           "target": "VolunteersObjectPage"
+        },
+        {
+          "pattern": "ActivitiesList",
+          "name": "ActivitiesList",
+          "target": "ActivitiesList"
+        },
+        {
+          "pattern": "Activities({key}):?query:",
+          "name": "ActivitiesObjectPage",
+          "target": "ActivitiesObjectPage"
+        },
+        {
+          "pattern": "PositionsList",
+          "name": "PositionsList",
+          "target": "PositionsList"
+        },
+        {
+          "pattern": "Positions({key}):?query:",
+          "name": "PositionsObjectPage",
+          "target": "PositionsObjectPage"
         }
       ],
       "targets": {
@@ -128,6 +148,87 @@
             "settings": {
               "editableHeaderContent": false,
               "contextPath": "/Volunteers"
+            }
+          }
+        },
+        "ActivitiesList": {
+          "type": "Component",
+          "id": "ActivitiesList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Activities",
+              "variantManagement": "Page",
+              "navigation": {
+                "Activities": {
+                  "detail": {
+                    "route": "ActivitiesObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ActivitiesObjectPage": {
+          "type": "Component",
+          "id": "ActivitiesObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Activities"
+            }
+          }
+        },
+        "PositionsList": {
+          "type": "Component",
+          "id": "PositionsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Positions",
+              "variantManagement": "Page",
+              "navigation": {
+                "Positions": {
+                  "detail": {
+                    "route": "PositionsObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "PositionsObjectPage": {
+          "type": "Component",
+          "id": "PositionsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/Positions"
+            }
+          }
+        }
+      },
+      "semanticObjectMappings": {
+        "Activities": {
+          "actions": {
+            "display": {
+              "target": "ActivitiesList"
             }
           }
         }

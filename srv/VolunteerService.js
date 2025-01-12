@@ -1,9 +1,9 @@
 const cds = require('@sap/cds');
 
+// filepath: /home/user/projects/EhBact/srv/VolunteerService.js
 module.exports = cds.service.impl(async function () {
-    const { Volunteer, Position, Registration } = this.entities;
+    const { Registration, Position, Volunteer } = this.entities;
 
-    
     this.before('CREATE', 'Registration', async (req) => {
         const { volunteer_ID, position_ID } = req.data;
     
@@ -55,5 +55,9 @@ module.exports = cds.service.impl(async function () {
     
         return totalHours.total || 0;
     });
-    
+
+    this.on('navigateToActivities', async (req) => {
+        const activities = await cds.tx(req).run(SELECT.from('VolunteerService.Activities'));
+        return activities;
+    });
 });
