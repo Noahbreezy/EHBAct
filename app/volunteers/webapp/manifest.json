@@ -104,12 +104,7 @@
           "target": "ActivitiesObjectPage"
         },
         {
-          "pattern": "PositionsList",
-          "name": "PositionsList",
-          "target": "PositionsList"
-        },
-        {
-          "pattern": "Positions({key}):?query:",
+          "pattern": "Activities({key})/Positions({key2}):?query:",
           "name": "PositionsObjectPage",
           "target": "PositionsObjectPage"
         }
@@ -183,29 +178,11 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Activities"
-            }
-          }
-        },
-        "PositionsList": {
-          "type": "Component",
-          "id": "PositionsList",
-          "name": "sap.fe.templates.ListReport",
-          "options": {
-            "settings": {
-              "contextPath": "/Positions",
-              "variantManagement": "Page",
+              "entitySet": "Activities",
               "navigation": {
-                "Positions": {
+                "positions": {
                   "detail": {
                     "route": "PositionsObjectPage"
-                  }
-                }
-              },
-              "controlConfiguration": {
-                "@com.sap.vocabularies.UI.v1.LineItem": {
-                  "tableSettings": {
-                    "type": "ResponsiveTable"
                   }
                 }
               }
@@ -219,7 +196,7 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Positions"
+              "entitySet": "Positions"
             }
           }
         }

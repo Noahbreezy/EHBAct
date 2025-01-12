@@ -29,7 +29,7 @@ annotate service.Volunteers with @(
                 $Type: 'UI.DataFieldWithUrl',
                 Label: 'Browse Activities',
                 Value: 'Browse Activities',
-                Url: 'http://localhost:4004/volunteers/webapp/index.html#/ActivitiesList'
+                Url  : 'http://localhost:4004/volunteers/webapp/index.html#/ActivitiesList'
             }
         ],
     },
@@ -49,8 +49,8 @@ annotate service.Volunteers with @(
         },
     ],
 
-    UI.Identification: [
-        
+    UI.Identification            : [
+
     ],
 
     UI.LineItem                  : [
@@ -167,35 +167,83 @@ annotate service.Activities with @(
             $Type : 'UI.ReferenceFacet',
             ID    : 'PositionsFacet',
             Label : 'Positions',
-            Target: 'positions/@UI.LineItem',
+            Target: 'positions/@UI.LineItem#PositionsList',
         },
     ]
 );
 
-annotate service.Positions with @(UI.LineItem: [
-    {
-        $Type: 'UI.DataField',
-        Label: 'Title',
-        Value: title,
+annotate service.Positions with @(
+    UI.HeaderInfo                 : {
+        TypeName      : 'Position',
+        TypeNamePlural: 'Positions',
+        Title         : {Value: title}
     },
-    {
-        $Type: 'UI.DataField',
-        Label: 'Description',
-        Value: description,
+
+    UI.FieldGroup #PositionDetails: {
+        $Type: 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type: 'UI.DataField',
+                Label: 'Title',
+                Value: title,
+            },
+            {
+                $Type: 'UI.DataField',
+                Label: 'Description',
+                Value: description,
+            },
+            {
+                $Type: 'UI.DataField',
+                Label: 'Start Shift',
+                Value: startShift,
+            },
+            {
+                $Type: 'UI.DataField',
+                Label: 'End Shift',
+                Value: endShift,
+            },
+            {
+                $Type: 'UI.DataField',
+                Label: 'Needed Volunteers',
+                Value: neededVolunteers,
+            }
+        ]
     },
-    {
-        $Type: 'UI.DataField',
-        Label: 'Needed Volunteers',
-        Value: neededVolunteers,
-    },
-    {
-        $Type: 'UI.DataField',
-        Label: 'Start Shift',
-        Value: startShift,
-    },
-    {
-        $Type: 'UI.DataField',
-        Label: 'End Shift',
-        Value: endShift,
-    },
-]);
+
+    UI.LineItem #PositionsList: [
+        {
+            $Type: 'UI.DataField',
+            Label: 'Title',
+            Value: title,
+        },
+        {
+            $Type: 'UI.DataField',
+            Label: 'Description',
+            Value: description,
+        },
+        {
+            $Type: 'UI.DataField',
+            Label: 'Needed Volunteers',
+            Value: neededVolunteers,
+        },
+        {
+            $Type: 'UI.DataField',
+            Label: 'Start Shift',
+            Value: startShift,
+        },
+        {
+            $Type: 'UI.DataField',
+            Label: 'End Shift',
+            Value: endShift,
+        }
+    ],
+
+    UI.Facets                     : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID    : 'PositionDetailsFacet',
+            Label : 'Position Details',
+            Target: '@UI.FieldGroup#PositionDetails',
+        }
+    ]
+);

@@ -21,7 +21,13 @@ sap.ui.define(
                 // Handle relevant object pages
                 if (
                     oParameters.name === "VolunteersObjectPage" ||
-                    oParameters.name === "VolunteersObjectPageDraft"
+                    oParameters.name === "VolunteersObjectPageDraft" ||
+                    oParameters.name === "ActivitiesObjectPage" ||
+                    oParameters.name === "ActivitiesObjectPageDraft" ||
+                    oParameters.name === "RegistrationsObjectPage" ||
+                    oParameters.name === "RegistrationsObjectPageDraft" ||
+                    oParameters.name === "PositionsObjectPage" ||
+                    oParameters.name === "PositionsObjectPageDraft"
                 ) {
                     var oArguments = oParameters.arguments;
                     for (var key in oArguments) {
